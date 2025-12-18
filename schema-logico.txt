@@ -1,0 +1,28 @@
+Cliente(CodF, nome, cognome, telefono, email)
+
+TipoCamera(CodTipoC, tipo, postiL)
+
+Camera(CodC, nC, piano, stato, prezzo, CodTipoC*)
+
+Prenotazione(CodP, dataInizio, dataFine, stato, codF*,CodC*)
+dataFine>dataInizio 
+
+
+Soggiorno(CodS, dataIn, dataFi, codP*)
+
+Servizi(CodServ, tipo)
+
+Consumi(CodCon, data, quantità, prezzo, CodServ*, CodS*)
+
+Fattura(CodFattura, totale, CodP*)
+
+Pagamenti(CodPag, tipo, importo, CodFattura*)
+
+Personale(CodPers, nome, cognome, ruolo, livello)
+
+Turni(CodT, dataI, dataF, CodPers*)
+dataF>dataI
+
+Manutenzione(CodM, descrizione, dataIni, dataFin, CodC*, CodPers*)
+dataFin>dataIni
+

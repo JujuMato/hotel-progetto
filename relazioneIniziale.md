@@ -96,3 +96,25 @@ Il diagramma ER è rappresentato tramite codice Mermaid.
 	
 ```
 ---
+
+## Schema logico
+
+A partire dal diagramma Entità-Relazione è stato progettato lo **schema logico relazionale**, convertendo ogni entità in una tabella del database e implementando le relazioni mediante **chiavi primarie** e **chiavi esterne**.
+
+La tabella **Cliente** contiene i dati anagrafici dei clienti ed è collegata alla tabella **Prenotazione** tramite una relazione uno-a-molti, poiché un cliente può effettuare più prenotazioni nel tempo, mentre ogni prenotazione è associata a un solo cliente.
+
+Le **Camere** sono gestite dalla tabella *Camera*, che memorizza le informazioni strutturali e di stato. Ogni camera appartiene a un solo **TipoCamera**, mentre un tipo di camera può essere associato a più camere, evitando ridondanze e semplificando la gestione delle caratteristiche comuni.
+
+La tabella **Prenotazione** rappresenta la richiesta di soggiorno del cliente ed è collegata alla tabella **Camera** con una relazione uno-a-molti: una camera può essere prenotata più volte in periodi diversi, mentre ogni prenotazione fa riferimento a una sola camera. Sono previsti vincoli temporali sulle date per garantire la correttezza del periodo di prenotazione.
+
+Per distinguere la fase di prenotazione dalla permanenza effettiva del cliente in hotel, è stata introdotta la tabella **Soggiorno**, collegata alla tabella Prenotazione tramite una relazione uno-a-uno. Questo permette una gestione più accurata del soggiorno reale.
+
+I **Servizi** offerti dall’hotel sono memorizzati in una tabella dedicata, mentre i **Consumi** rappresentano l’utilizzo effettivo dei servizi durante il soggiorno. La relazione tra Servizi e Consumi è di tipo uno-a-molti: un servizio può essere utilizzato più volte, mentre ogni consumo è riferito a un singolo servizio e a un singolo soggiorno.
+
+La gestione economica è realizzata tramite le tabelle **Fattura** e **Pagamenti**. Ogni prenotazione genera una sola fattura (relazione uno-a-uno), mentre una fattura può essere saldata tramite uno o più pagamenti, consentendo la gestione di pagamenti parziali o rateizzati.
+
+Il **Personale** dell’hotel è gestito tramite una tabella dedicata ed è collegato alla tabella **Turni** con una relazione uno-a-molti, poiché ogni dipendente può svolgere più turni di lavoro. Sono inoltre previsti vincoli temporali per garantire la coerenza delle date.
+
+Infine, la tabella **Manutenzione** consente di registrare gli interventi effettuati sulle camere. Ogni intervento di manutenzione è associato sia a una **Camera** sia a un membro del **Personale**, garantendo la tracciabilità delle operazioni svolte.
+
+---

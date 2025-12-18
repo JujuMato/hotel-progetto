@@ -80,3 +80,19 @@ Le relazioni modellano il funzionamento reale dell’hotel:
 
 Il diagramma ER è rappresentato tramite codice Mermaid.
 
+```mermaid
+	erDiagram
+    CLIENTE ||--o{ PRENOTAZIONE : effettua
+    PRENOTAZIONE ||--|{ FATTURA : genera
+    FATTURA ||--o{ PAGAMENTI : include
+    PRENOTAZIONE ||--o{ CAMERA : assegna
+    TIPOCAMERA ||--o{ CAMERA : definisce
+    CAMERA ||--o{ MANUTENZIONE : richiede
+    MANUTENZIONE ||--o{ PERSONALE : svolta_da
+    PERSONALE ||--o{ TURNI : ha
+    PRENOTAZIONE ||--|| SOGGIORNO : genera
+    SOGGIORNO ||--o{ CONSUMI : registra
+    CONSUMI ||--o{ SERVIZI : include
+	
+```
+---

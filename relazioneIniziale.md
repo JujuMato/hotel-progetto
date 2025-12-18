@@ -118,3 +118,68 @@ Il **Personale** dell’hotel è gestito tramite una tabella dedicata ed è coll
 Infine, la tabella **Manutenzione** consente di registrare gli interventi effettuati sulle camere. Ogni intervento di manutenzione è associato sia a una **Camera** sia a un membro del **Personale**, garantendo la tracciabilità delle operazioni svolte.
 
 ---
+
+## Dizionario dei dati
+
+### Tabella Cliente
+- **codF**: codice fiscale del cliente  
+- **nome**: nome del cliente  
+- **cognome**: cognome del cliente  
+- **telefono**: numero di telefono  
+- **email**: indirizzo email  
+
+### Tabella TipoCamera
+- **codTipoC**: codice del tipo di camera  
+- **tipo**: tipologia della camera (singola, doppia, suite, familiare)  
+- **postiL**: numero di posti letto  
+
+### Tabella Camera
+- **codC**: codice della camera  
+- **nC**: numero della camera  
+- **piano**: piano in cui si trova la camera  
+- **stato**: stato della camera  
+- **prezzo**: prezzo base  
+- **codTipoC**: chiave esterna verso TipoCamera  
+
+### Tabella Prenotazione
+- **codP**: codice della prenotazione  
+- **dataInizio**: data di inizio soggiorno  
+- **dataFine**: data di fine soggiorno  
+- **stato**: stato della prenotazione  
+- **codF**: chiave esterna verso Cliente  
+- **codC**: chiave esterna verso Camera  
+
+### Tabella Soggiorno
+- **codS**: codice del soggiorno  
+- **dataIn**: data di inizio soggiorno  
+- **dataFi**: data di fine soggiorno  
+- **codP**: chiave esterna verso Prenotazione  
+
+### Tabella Servizi
+- **codServ**: codice del servizio  
+- **tipo**: tipo di servizio offerto  
+
+### Tabella Consumi
+- **codCon**: codice del consumo  
+- **data**: data del consumo  
+- **quantita**: quantità consumata  
+- **prezzo**: prezzo del consumo  
+- **codServ**: chiave esterna verso Servizi  
+- **codS**: chiave esterna verso Soggiorno  
+
+### Tabella Fattura
+- **codFattura**: codice della fattura  
+- **totale**: importo totale  
+- **codP**: chiave esterna verso Prenotazione  
+
+### Tabella Pagamenti
+- **codPag**: codice del pagamento  
+- **tipo**: modalità di pagamento  
+- **codFattura**: chiave esterna verso Fattura  
+
+---
+
+## Conclusioni
+
+La realizzazione del database per la gestione di un hotel ha permesso di creare un modello chiaro e ben organizzato, in linea con i requisiti richiesti. Il diagramma entità-relazione e lo schema logico consentono di gestire correttamente clienti, prenotazioni, camere e servizi, assicurando ordine e coerenza nei dati.
+Questo progetto rappresenta una buona base per un eventuale sviluppo futuro, come la creazione di un’interfaccia per l’utilizzo del sistema.

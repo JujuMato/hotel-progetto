@@ -1,0 +1,97 @@
+---
+config:
+  look: neo
+  theme: redux-color
+---
+erDiagram
+    CLIENTE ||--o{PRENOTAZIONE : effettua
+
+    PRENOTAZIONE ||--|{FATTURA : genera
+
+    FATTURA ||--o{ PAGAMENTI : include
+
+    PRENOTAZIONE ||--o{ CAMERA : assegna
+
+    TIPOCAMERA ||--o{ CAMERA : definisce
+
+    CAMERA }|--|{ MANUTENZIONE : richiede
+
+    MANUTENZIONE }|--|{ PERSONALE : svolta_da
+
+    PERSONALE }|--|{ TURNI  : ha
+
+    PRENOTAZIONE ||--|| SOGGIORNO : genera
+
+    SOGGIORNO }|--|{ CONSUMI : registra
+
+    CONSUMI ||--o{ SERVIZI : include
+   
+    CLIENTE {
+        string codF
+        string nome
+        string cognome
+        string telefono
+        string email
+    }
+    PRENOTAZIONE {
+        string codP
+        date dataInizio
+        date dataFine
+        string stato
+    }
+    TIPOCAMERA {
+        string codTipoC
+        string tipo
+        int postiL
+    }
+    CAMERA {
+        string codC
+        int nC
+        int piano
+        boolean stato
+        float prezzo
+    }
+    FATTURA{
+        string codFat
+        string codC
+        float totale
+    }
+    PAGAMENTI{
+        string codPag
+        enum tipo
+        string codFa
+    }
+    MANUTENZIONE{
+        string codM
+        string descrizione
+        date dataInizio
+        date dataFine
+    }
+    PERSONALE{
+        string codPers
+        enum ruolo
+        enum livello
+        string nome
+        string cognome
+    }
+    TURNI{
+        string codT
+        date dataI 
+        date dataF 
+        string codPers
+    }
+    SOGGIORNO{
+        string codS
+        date dataIn 
+        date dataFi
+    }
+    CONSUMI{
+        string codCon
+        date data
+        int quantita
+        float prezzo
+    }
+    SERVIZI{
+        string codServ
+        enum tipo
+    }
